@@ -1,0 +1,44 @@
+.sbom-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .sbom-form label {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+  
+  .sbom-form input[type="text"],
+  .sbom-form input[type="checkbox"],
+  .sbom-form input[type="version"],
+  .sbom-form input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.95rem;
+  }
+  
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .submit-btn {
+    padding: 0.6rem 1.2rem;
+    background-color: #10b981;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .submit-btn:hover {
+    background-color: #059669;
+  }
+  

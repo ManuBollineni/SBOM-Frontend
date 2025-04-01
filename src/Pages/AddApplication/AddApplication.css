@@ -1,0 +1,91 @@
+.application-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  font-family: 'Segoe UI', sans-serif;
+  max-width: auto;
+  margin: auto;
+}
+
+.application-form label {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.application-form input,
+.application-form select {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #f9f9f9;
+  transition: all 0.3s ease-in-out;
+}
+
+.application-form input:focus,
+.application-form select:focus {
+  border-color: #007bff;
+  background: #ffffff;
+  outline: none;
+}
+
+.application-form select {
+  appearance: none;
+  background: #f9f9f9 url('data:image/svg+xml;utf8,<svg fill="%23333" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  cursor: pointer;
+}
+
+.application-form select:hover {
+  background-color: #fff;
+}
+
+/* Ensure full width for multi-select dropdown */
+.application-form .select-container {
+  grid-column: span 2;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  grid-column: span 2;
+  margin-top: 0.5rem;
+}
+
+.submit-btn {
+  grid-column: span 2;
+  padding: 0.6rem 1.2rem;
+  background-color: #10b981;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+}
+
+.submit-btn:hover {
+  background-color: #059669;
+}
+
+/* Responsive: Convert to single column for smaller screens */
+@media (max-width: 600px) {
+  .application-form {
+    grid-template-columns: 1fr;
+  }
+
+  .submit-btn,
+  .application-form .select-container,
+  .checkbox-label {
+    grid-column: span 1;
+  }
+}
+
+.component-table{
+  margin: 20px 5px
+}

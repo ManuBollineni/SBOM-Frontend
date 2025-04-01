@@ -1,0 +1,56 @@
+/* Main Header (Acts as a Top Navigation Bar) */
+.cc-aside_main {
+    width: 100%; /* Full width */
+    height: 70px; /* Adjust height as needed */
+    background-color: #333; /* Dark background */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    position: fixed; /* Keeps it at the top */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensures it stays on top */
+  }
+  
+  /* Logo */
+  .cc-aside_logo {
+    height: 50px; /* Adjust logo size */
+    width: auto;
+  }
+
+  
+  /* Logout Button */
+.cc-aside_main > .cc-nav-link:last-of-type {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+  }
+  
+  .cc-aside_main > .cc-nav-link:last-of-type:hover {
+    background-color: darkred;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .cc-aside_main {
+      flex-direction: column;
+      height: auto;
+      padding: 10px;
+    }
+  
+    .navbar {
+      margin-top: 10px;
+    }
+  
+    .nav-links {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .cc-nav-link {
+      font-size: 14px;
+    }
+  }

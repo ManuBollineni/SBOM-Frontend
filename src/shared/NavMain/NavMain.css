@@ -1,0 +1,26 @@
+/* Navbar */
+.navbar {
+    flex-grow: 1; /* Allow navigation to fill available space */
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Navigation Links */
+  .nav-links {
+    display: flex;
+    gap: 20px; /* Space between links */
+  }
+  
+  .cc-nav-link {
+    font-size: 16px;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .cc-nav-link:hover,
+  .cc-nav-link.active {
+    background-color: #555; /* Highlight on hover */
+  }
+  
