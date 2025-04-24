@@ -4,12 +4,16 @@ import Datatable from "../../components/table";
 import SBOMModal from "../../components/model";
 import SBOMForm from "../AddSBOM/AddSBOM";
 import api from '../../utils/api'
+import SearchComponent  from "../../components/search";
 import './ViewSBOM.css';
 
 const ViewSBOM = ( ) =>{
 const [isModalOpen, setIsModalOpen] = useState(false);
 // const [formData, setFormData] = useState();
 const [componentList, setComponentList] = useState([]);
+const [filteredList, setFilteredList] = useState([]);
+const [searchQuery, setSearchQuery] = useState('');
+
  const [formData, setFormData] = useState({
     name: '',
     version: '',
@@ -29,7 +33,20 @@ const [componentList, setComponentList] = useState([]);
     } catch (error) {
         console.error("Error fetching applications", error);
     }
-}; 
+  }; 
+
+ // Search functionality
+  useEffect(() => {
+    const results = componentList.filter(component =>
+      component.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredList(results.length > 0 || searchQuery ? results : componentList);
+  }, [searchQuery, componentList]);
+  
+  
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+  };
 
   const columns = [
     {
@@ -87,15 +104,16 @@ const [componentList, setComponentList] = useState([]);
     return (
         <div>
           <div className="cc-addcomponent">
+            <SearchComponent onSearch={handleSearch} ></SearchComponent>
             <button className="btn-addSBOM" onClick={addComponent}>Add Component</button>
           </div>
           <div>
-            <Datatable columns={columns} data={componentList}/>
+            <Datatable columns={columns} data={filteredList}/>
           </div>
 
             <SBOMModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
               
-              <p>Here you can add details about the software bill of materials.</p>
+              {/* <p>Here you can add details about the software bill of materials.</p> */}
               <SBOMForm
                 formData={formData}
                 setFormData={setFormData}

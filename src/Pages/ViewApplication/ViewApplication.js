@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Datatable from "../../components/table";
 import SBOMModal from "../../components/model";
 import AddApplicationForm from "../AddApplication/AddApplication";
+import SearchComponent  from "../../components/search";
 import api from '../../utils/api'
 import './ViewApplication.css';
 
@@ -11,6 +12,8 @@ const ViewApplication = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedComponents, setSelectedComponents] = useState([]);
     const [applicationList, setApplicationList] = useState([]);
+    const [filteredList, setFilteredList] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
     const [formData, setFormData] = useState({
         name: '',
         category: '',
@@ -34,6 +37,18 @@ const ViewApplication = () => {
             console.error("Error fetching applications", error);
         }
     }; 
+
+    // Search functionality
+    useEffect(() => {
+    const results = applicationList.filter(component =>
+        component.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredList(results.length > 0 || searchQuery ? results : applicationList);
+    }, [searchQuery, applicationList]);
+
+    const handleSearch = (query) => {
+        setSearchQuery(query);
+    };
 
     const columns = [
         { name: 'Name', selector: row => row.name, sortable: true },
@@ -105,11 +120,12 @@ const ViewApplication = () => {
 
     return (
         <div>
-            <div className="cc-addapplication">
+            <div className="cc-addApplication">
+                <SearchComponent onSearch={handleSearch} ></SearchComponent>
                 <button className="btn-addApplication" onClick={addApplication}>Add Application</button>
             </div>
             <div>
-                <Datatable columns={columns} data={applicationList} />
+                <Datatable columns={columns} data={filteredList} />
             </div>
 
             <SBOMModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
