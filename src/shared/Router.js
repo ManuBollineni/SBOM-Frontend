@@ -7,6 +7,7 @@ import Search from './../Pages/Search';
 import Stats from './../Pages/Stats';
 import Platforms from './../Pages/Platforms';
 import ViewApplication from "../Pages/ViewApplication/ViewApplication";
+import FileUpload from "../Pages/FileUpload/FileUpload";
 import { Route, Routes, redirect} from 'react-router-dom';
 
 const Router = () => {
@@ -21,6 +22,7 @@ const Router = () => {
             <Route path="/ViewSBOM" element={<ViewSBOM/>}/>
             <Route exact path="/CompareSBOM" element={<CompareSBOM/>} />
             <Route exact path="/ViewApplication" element={<ViewApplication/>} />
+            <Route exact path="/File-Upload" element={<FileUpload/>} />
         </Routes>
     );
 }

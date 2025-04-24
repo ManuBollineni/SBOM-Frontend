@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Datatable from "../../components/table";
 import SBOMModal from "../../components/model";
 import SBOMForm from "../AddSBOM/AddSBOM";
-import api from '../../utils/api'
+import api from '../../utils/api';
 import SearchComponent  from "../../components/search";
 import './ViewSBOM.css';
 
