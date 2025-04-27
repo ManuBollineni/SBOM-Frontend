@@ -67,3 +67,10 @@ html, body {
       padding: 2rem
     }
 }  
+
+.error-text {
+    color: red;
+    font-size: 14px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+  }
