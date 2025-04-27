@@ -1,0 +1,109 @@
+/* CompareSBOM.css */
+
+.compare-container {
+    background-color: #ffffff;
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 1200px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+  }
+  
+  .compare-title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #1f2937;
+  }
+  
+  .sbom-dropdown-section {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .sbom-select-wrapper {
+    flex: 1;
+    min-width: 250px;
+  }
+  
+  .sbom-dropdown {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background-color: #f9fafb;
+  }
+  
+  .compare-button-wrapper {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .compare-button {
+    background-color: #3b82f6;
+    color: white;
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .compare-button:hover {
+    background-color: #2563eb;
+  }
+  
+  .components-compare-table-section {
+    margin-top: 2rem;
+    overflow-x: auto;
+  }
+  
+  .components-compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+  }
+  
+  .components-compare-table th,
+  .components-compare-table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .components-compare-table th {
+    background-color: #f3f4f6;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #374151;
+  }
+  
+  .components-compare-table td {
+    font-size: 0.95rem;
+    color: #374151;
+  }
+  
+  .same-version {
+    background-color: #e0f7fa; /* Light Teal background if same */
+  }
+  
+  .different-version {
+    background-color: #ffe4e6; /* Light Red background if different */
+  }
+  
+  .component-name {
+    font-weight: 600;
+    color: #1f2937;
+  }
+  
+  .border-right {
+    border-right: 2px solid #d1d5db;
+  }
+  
