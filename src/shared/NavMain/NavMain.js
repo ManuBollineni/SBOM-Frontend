@@ -13,6 +13,9 @@ function NavMain(){
           <NavLink to="/ViewSBOM" className="cc-nav-link">Components</NavLink>
           <NavLink to="/CompareSBOM" className="cc-nav-link">Compare SBOM</NavLink>
           <NavLink to="/File-Upload" className="cc-nav-link">File Upload</NavLink>
+
+          <NavLink to="/Login" className="cc-nav-link">Login</NavLink>
+          
       </ul>
     </nav>
     );
