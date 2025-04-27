@@ -1,86 +1,119 @@
-/* Home.css */
-
-/* Overall Container */
+/* Full screen */
 .home-container {
-    display: flex;
-    min-height: calc(100vh - 60px); /* Full screen minus navbar */
-    background-color: #f5f5f5;
-    padding: 0;
-    margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 60px); /* leaving space for navbar */
+  background-color: #f5f5f5;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+/* Cards wrapper */
+.card-wrapper {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+  max-width: 1300px;
+}
+
+/* Common Card Styles */
+.card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 600px; /* Equal height */
+}
+
+/* Welcome Card */
+.welcome-card h1 {
+  font-size: 30px;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.welcome-card p, 
+.welcome-card li {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #333;
+}
+
+.welcome-card ul {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+
+.welcome-card blockquote {
+  margin-top: 30px;
+  padding-left: 15px;
+  border-left: 4px solid #4285f4;
+  color: #777;
+  font-style: italic;
+}
+
+/* Signup Card */
+.signup-card {
+  align-items: center;
+}
+
+.signup-card h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+/* Form inside Signup */
+.auth-form {
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.auth-form input {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.auth-form button {
+  padding: 12px;
+  font-size: 16px;
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.auth-form button:hover {
+  background-color: #3367d6;
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .card-wrapper {
+      flex-direction: column;
+      align-items: center;
   }
-  
-  /* Left Side */
-  .home-left {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    font-weight: 500;
-    color: #333;
-  }
-  
-  /* Right Side */
-  .home-right {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ffffff;
-    box-shadow: -2px 0px 10px rgba(0, 0, 0, 0.1); /* vertical shadow separator */
-    padding: 40px;
-  }
-  
-  /* Sign Up Card */
-  .auth-container {
-    background: #ffffff;
-    width: 100%;
-    max-width: 400px;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  /* Heading */
-  .auth-container h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
-  }
-  
-  /* Form */
-  .auth-form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .auth-form input {
-    padding: 12px 15px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    width: 100%;
-  }
-  
-  /* Button */
-  .auth-form button {
-    padding: 12px 15px;
-    font-size: 16px;
-    font-weight: 600;
-    background-color: #4285f4;
-    color: #ffffff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .auth-form button:hover {
-    background-color: #3367d6;
-  }
-  
+}

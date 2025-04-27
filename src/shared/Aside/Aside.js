@@ -15,9 +15,12 @@ const Aside = () =>{
 
             <NavMain></NavMain>
 
-            <a className="cc-nav-link" href="/" onClick={()=>{}}>
-              {/* <Icon name="power-off" /> */}
-              Logout
+            <a className="cc-nav-button cc-login-button" href="/Login">
+                Login
+            </a>
+
+            <a className="cc-nav-button cc-logout-button" href="/">
+                Logout
             </a>
         </aside>
     );

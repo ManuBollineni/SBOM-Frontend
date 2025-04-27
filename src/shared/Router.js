@@ -4,7 +4,7 @@ import About from './../Pages/About';
 import CompareSBOM from './../Pages/CompareSBOM/CompareSBOM';
 import ViewSBOM from '../Pages/ViewSBOM/ViewSBOM';
 import Search from './../Pages/Search';
-import Stats from './../Pages/Stats';
+import Stats from './../Pages/Stats/Stats';
 import Platforms from './../Pages/Platforms';
 import ViewApplication from "../Pages/ViewApplication/ViewApplication";
 import FileUpload from "../Pages/FileUpload/FileUpload";
@@ -20,7 +20,7 @@ const Router = () => {
             <Route exact path="/About" element={<About/>}/>
             <Route exact path="/Search" element={<Search/>}/>
             <Route exact path="/Platforms" element={<Platforms/>}/>
-            <Route exact path="/Stats" element={<Stats/>}/>
+            <Route exact path="/Statistics" element={<Stats/>}/>
             <Route path="/ViewSBOM" element={<ViewSBOM/>}/>
             <Route exact path="/CompareSBOM" element={<CompareSBOM/>} />
             <Route exact path="/ViewApplication" element={<ViewApplication/>} />

@@ -54,3 +54,49 @@
       font-size: 14px;
     }
   }
+
+  /* Login Button Special Style */
+.cc-nav-link[href="/Login"] {
+  background-color: #4285f4;
+  color: #fff;
+  border-color: #4285f4;
+}
+
+.cc-nav-link[href="/Login"]:hover {
+  background-color: #3367d6;
+  border-color: #3367d6;
+}
+
+/* Common Button Style */
+.cc-nav-button {
+  display: inline-block;
+  padding: 8px 18px;
+  margin: 0 6px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* Login Button */
+.cc-login-button {
+  background-color: #4285f4;
+  color: white;
+}
+
+.cc-login-button:hover {
+  background-color: #3367d6;
+}
+
+/* Logout Button */
+.cc-logout-button {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.cc-logout-button:hover {
+  background-color: #c0392b;
+}

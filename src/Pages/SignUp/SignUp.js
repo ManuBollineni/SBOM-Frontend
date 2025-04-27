@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../../utils/api'
-import './SignUp.css'; // Reuse your signup CSS file
+import '../Home/Home.css'; // Reuse your signup CSS file
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
