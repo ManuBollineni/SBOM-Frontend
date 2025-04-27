@@ -1,31 +1,58 @@
+.view-application-page {
+  padding: 40px;
+  background-color: #f9fafb;
+  min-height: calc(100vh - 60px);
+}
+
+/* Single card now */
+.cc-card {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 8px 18px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Search and Add App inside card */
+.cc-addApplication {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Search input area */
+.search-component {
+  flex: 1;
+  max-width: 350px;
+}
+
+/* Add Application Button */
 .btn-addApplication {
-    background-color: #3b82f6; /* blue-500 */
-    color: white;
-    padding: 0.6rem 1.2rem;
-    border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.1s ease;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  }
-  
-  .btn-addApplication:hover {
-    background-color: #2563eb; /* blue-600 */
-  }
-  
-  .btn-addApplication:active {
-    transform: scale(0.98);
-  }
-  
-  .btn-addApplication:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4); /* blue-500 ring */
-  }
-  
-  .cc-addApplication{
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 1rem;
-  }
+  background-color: #3b82f6;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-addApplication:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+}
+
+.btn-addApplication:active {
+  transform: scale(0.98);
+}
+
+/* Table Styling */
+.data-table-container {
+  width: 100%;
+}

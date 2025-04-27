@@ -101,29 +101,31 @@ const [searchQuery, setSearchQuery] = useState('');
     }
   }
   
-    return (
-        <div>
-          <div className="cc-addcomponent">
-            <SearchComponent onSearch={handleSearch} ></SearchComponent>
-            <button className="btn-addSBOM" onClick={addComponent}>Add Component</button>
-          </div>
-          <div>
-            <Datatable columns={columns} data={filteredList}/>
-          </div>
+  return (
+    <div className="sbom-container">
+      <div className="sbom-card">
+        {/* Optional: Title */}
+        <h2 className="sbom-title">Component List</h2>
 
-            <SBOMModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-              
-              {/* <p>Here you can add details about the software bill of materials.</p> */}
-              <SBOMForm
-                formData={formData}
-                setFormData={setFormData}
-                onSubmit={onSubmit}>
-              </SBOMForm>
-            </SBOMModal>
+        <div className="sbom-header">
+          <SearchComponent onSearch={handleSearch} />
+          <button className="btn-addSBOM" onClick={addComponent}>+ Add Component</button>
         </div>
 
-        
-    );
+        <div className="sbom-table">
+          <Datatable columns={columns} data={filteredList} />
+        </div>
+      </div>
+
+      <SBOMModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <SBOMForm 
+          formData={formData}
+          setFormData={setFormData}
+          onSubmit={onSubmit}
+        />
+      </SBOMModal>
+    </div>
+  );
 }
 
 

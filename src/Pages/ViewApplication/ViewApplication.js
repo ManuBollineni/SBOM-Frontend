@@ -119,24 +119,37 @@ const ViewApplication = () => {
     }
 
     return (
-        <div>
-            <div className="cc-addApplication">
-                <SearchComponent onSearch={handleSearch} ></SearchComponent>
-                <button className="btn-addApplication" onClick={addApplication}>Add Application</button>
+        <div className="view-application-page">
+    
+            {/* 📦 Entire content inside ONE card */}
+            <div className="cc-card">
+                {/* Top part: Search + Add Button */}
+                <div className="cc-addApplication">
+                    <div className="search-component">
+                        <SearchComponent onSearch={handleSearch} />
+                    </div>
+                    <button className="btn-addApplication" onClick={addApplication}>
+                        + Add Application
+                    </button>
+                </div>
+    
+                {/* Table below */}
+                <div className="data-table-container">
+                    <Datatable columns={columns} data={filteredList} />
+                </div>
             </div>
-            <div>
-                <Datatable columns={columns} data={filteredList} />
-            </div>
-
+    
+            {/* Modal */}
             <SBOMModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-                {/* <p>Enter details for the new application.</p> */}
-                <AddApplicationForm 
-                 formData={formData} 
-                 setFormData={setFormData}
-                 onSubmit={onSubmit}
-                 selectedComponents= {selectedComponents}
-                 setSelectedComponents = {setSelectedComponents}  />
+                <AddApplicationForm
+                    formData={formData}
+                    setFormData={setFormData}
+                    onSubmit={onSubmit}
+                    selectedComponents={selectedComponents}
+                    setSelectedComponents={setSelectedComponents}
+                />
             </SBOMModal>
+    
         </div>
     );
 };

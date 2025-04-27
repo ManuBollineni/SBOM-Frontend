@@ -1,31 +1,66 @@
+/* ViewSBOM.css */
+
+/* Full page container */
+.sbom-container {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* Card */
+.sbom-card {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Optional title inside the card */
+.sbom-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+/* Top header - search + add button */
+.sbom-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Add Component button */
 .btn-addSBOM {
-    background-color: #3b82f6; /* blue-500 */
-    color: white;
-    padding: 0.6rem 1.2rem;
-    border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.1s ease;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  }
-  
-  .btn-addSBOM:hover {
-    background-color: #2563eb; /* blue-600 */
-  }
-  
-  .btn-addSBOM:active {
-    transform: scale(0.98);
-  }
-  
-  .btn-addSBOM:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4); /* blue-500 ring */
-  }
-  
-  .cc-addcomponent{
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 1rem;
-  }
+  background-color: #3b82f6;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.btn-addSBOM:hover {
+  background-color: #2563eb;
+}
+
+.btn-addSBOM:active {
+  transform: scale(0.98);
+}
+
+.btn-addSBOM:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4);
+}
+
+/* Table area */
+.sbom-table {
+  margin-top: 1rem;
+}
