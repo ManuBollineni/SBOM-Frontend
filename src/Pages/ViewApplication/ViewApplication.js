@@ -140,9 +140,23 @@ const ViewApplication = () => {
             fetchApplications();
             setIsModalOpen(false);
             setSelectedComponents([]);
+            setEditingApplication(null);   // ✅ Clear editing state
+            resetFormData();                // ✅ Reset the form
         } catch (error) {
             showErrorToast("Error saving application");
         }
+    };
+
+    const resetFormData = () => {
+        setFormData({
+            name: '',
+            category: '',
+            operatingSystem: 'iOS',
+            binaryType: 'mobile',
+            supplier: '',
+            manufacturer: '',
+            sbom: '',
+        });
     };
 
     const saveSbomByAppIds = async (componentData) => {
@@ -150,7 +164,6 @@ const ViewApplication = () => {
         {
             const response = await api.post('/addSboms', componentData);
             console.log("Submitted form data", componentData);
-            showSuccessToast('Added successfully!');
             return response.data;
         }
         catch(error)
