@@ -135,10 +135,12 @@ const FileUpload = ({ onPackagesExtracted }) => {
         {
             const response = await api.post('/addSboms', componentData);
             console.log("Submitted form data", componentData);
+            showSuccessToast('Data added successfully!');
             return response.data;
         }
         catch(error)
         {
+            showErrorToast("Error in saving SBOM by application ID");
             console.error("Error in saving SBOM by application ID", error);
             throw error;
         }

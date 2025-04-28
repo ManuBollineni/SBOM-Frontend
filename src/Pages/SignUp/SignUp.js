@@ -65,12 +65,12 @@ const SignUp = () => {
         });
   
         console.log('Sign Up Successful', response.data);
-        alert('User Registered Successfully!');
+        showSuccessToast('Sign Up Successful!');
         navigate('/login'); // ✅ Redirect to login page after successful signup
   
       } catch (error) {
+        showErrorToast("Error occured during signup. Please try again.");
         console.error('Error during signup:', error);
-        alert(error.response?.data?.message || 'Signup Failed');
       }
     }
   };

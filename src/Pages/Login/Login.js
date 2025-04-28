@@ -40,15 +40,14 @@ const Login = () => {
           password
         });
 
+        showSuccessToast('Login Successful');
         console.log('Login Successful', response.data);
-        alert('Login Successful!');
-
         // Redirect to home/dashboard after login success
         navigate('/Home');
 
       } catch (error) {
-        console.error('Error during login:', error);
-        alert(error.response?.data?.message || 'Login Failed');
+        showErrorToast("Error occured during login");
+        //alert(error.response?.data?.message || 'Login Failed');
       }
     }
   };

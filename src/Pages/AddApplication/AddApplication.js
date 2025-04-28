@@ -23,6 +23,7 @@ const AddApplicationForm = ({ formData, setFormData, onSubmit, selectedComponent
             setComponentList(response.data);
             return response.data; 
         } catch (error) {
+            showErrorToast("Error fetching Components");
             console.error("Error fetching components", error);
             throw error;
         }

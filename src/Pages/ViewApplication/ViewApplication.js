@@ -31,9 +31,9 @@ const ViewApplication = () => {
     const fetchApplications = async () => {
         try {
             const response = await api.get('/getAllApplication'); // Adjust endpoint if needed
-            console.log("Fetched applications:", response.data);
             setApplicationList(response.data);
         } catch (error) {
+            showErrorToast("Error fetching applications");
             console.error("Error fetching applications", error);
         }
     }; 
@@ -72,7 +72,7 @@ const ViewApplication = () => {
             const response = await api.post('/addApplication', formData);
             console.log("Submitted form data", formData);
             const applicationId = response.data.data._id;
-
+            showSuccessToast('Application added successfully!');
             // If there are selected components, insert them into the components table with application ID
             if (selectedComponents.length > 0) {
                 const componentData = {
@@ -99,7 +99,7 @@ const ViewApplication = () => {
 
             return response.data;
         } catch (error) {
-            console.error("Error in form submission", error);
+            showErrorToast("Error in form submission");
             throw error;
         }
     };
@@ -109,11 +109,12 @@ const ViewApplication = () => {
         {
             const response = await api.post('/addSboms', componentData);
             console.log("Submitted form data", componentData);
+            showSuccessToast('Added successfully!');
             return response.data;
         }
         catch(error)
         {
-            console.error("Error in saving SBOM by application ID", error);
+            showErrorToast("Error in saving SBOM by application ID");
             throw error;
         }
     }

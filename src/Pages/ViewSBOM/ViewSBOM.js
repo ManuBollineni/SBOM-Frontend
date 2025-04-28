@@ -6,6 +6,7 @@ import SBOMForm from "../AddSBOM/AddSBOM";
 import api from '../../utils/api';
 import SearchComponent  from "../../components/search";
 import './ViewSBOM.css';
+import { showSuccessToast, showErrorToast } from "../../utils/Toast/Toast";
 
 const ViewSBOM = ( ) =>{
 const [isModalOpen, setIsModalOpen] = useState(false);
@@ -13,6 +14,7 @@ const [isModalOpen, setIsModalOpen] = useState(false);
 const [componentList, setComponentList] = useState([]);
 const [filteredList, setFilteredList] = useState([]);
 const [searchQuery, setSearchQuery] = useState('');
+
 
  const [formData, setFormData] = useState({
     name: '',
@@ -31,7 +33,7 @@ const [searchQuery, setSearchQuery] = useState('');
         console.log("Fetched applications:", response.data);
         setComponentList(response.data);
     } catch (error) {
-        console.error("Error fetching applications", error);
+      showErrorToast("Error fetching Components");
     }
   }; 
 
@@ -92,11 +94,12 @@ const [searchQuery, setSearchQuery] = useState('');
         isVulnerable: false,
       });
       setIsModalOpen(false);
+      showSuccessToast('Component added successfully!');
       fetchComponents();
       return response.data;
     }
     catch (error) {
-      console.log("error in form data", error);
+      showErrorToast("error in form data");
       throw error;
     }
   }
@@ -109,7 +112,7 @@ const [searchQuery, setSearchQuery] = useState('');
 
         <div className="sbom-header">
           <SearchComponent onSearch={handleSearch} />
-          <button className="btn-addSBOM" onClick={addComponent}>+ Add Component</button>
+          <button className="btn-addSBOM" onClick={addComponent}> Add Component</button>
         </div>
 
         <div className="sbom-table">
