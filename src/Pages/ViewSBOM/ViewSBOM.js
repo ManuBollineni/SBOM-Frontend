@@ -7,6 +7,8 @@ import api from '../../utils/api';
 import SearchComponent  from "../../components/search";
 import './ViewSBOM.css';
 import { showSuccessToast, showErrorToast } from "../../utils/Toast/Toast";
+import { FaEdit, FaTrash } from 'react-icons/fa';
+
 
 const ViewSBOM = ( ) =>{
 const [isModalOpen, setIsModalOpen] = useState(false);
@@ -73,7 +75,51 @@ const [searchQuery, setSearchQuery] = useState('');
       name: 'Vulnerable',
       selector: row => (row.isVulnerable ? 'Yes' : 'No'),
     },
+    {
+      name: 'Actions',
+      cell: row => (
+        <div className="action-icons">
+          <FaEdit
+            className="edit-icon"
+            onClick={() => handleEdit(row)}
+          />
+          <FaTrash
+            className="delete-icon"
+            onClick={() => handleDelete(row)}
+          />
+        </div>
+      ),
+      ignoreRowClick: true,
+      allowOverflow: true,
+      button: true,
+    },
   ];
+
+  const handleEdit = (row) => {
+    console.log("Edit clicked for:", row);
+    // Later you can open a modal with form pre-filled
+    // Example: 
+    setIsModalOpen(true);
+    setFormData({
+      name: row.name,
+      version: row.version,
+      license: row.license,
+      supplier: row.supplier,
+      isVulnerable: row.isVulnerable,
+    });
+  };
+
+  const handleDelete = async (row) => {
+    if (window.confirm(`Are you sure you want to delete component ${row.name}?`)) {
+        try {
+            await api.delete(`/deleteComponent/${row._id}`);  // 👈 Adjust API if different
+            console.log("Deleted component:", row.name);
+            fetchComponents(); // refresh the list
+        } catch (error) {
+            console.error("Error deleting component:", error);
+        }
+    }
+  };
 
   const addComponent = () => {
     setIsModalOpen(true);

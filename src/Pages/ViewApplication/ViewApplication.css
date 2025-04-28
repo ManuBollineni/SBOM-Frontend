@@ -56,3 +56,24 @@
 .data-table-container {
   width: 100%;
 }
+
+
+/* Actions Column Icons */
+.action-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.action-icons svg {
+  font-size: 22px; /* Bigger size */
+  cursor: pointer;
+  color: #4b5563; /* Gray-600 */
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.action-icons svg:hover {
+  color: #1d4ed8; /* Blue-700 on hover */
+  transform: scale(1.2); /* Slight zoom */
+}

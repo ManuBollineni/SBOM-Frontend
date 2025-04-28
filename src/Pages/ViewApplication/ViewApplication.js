@@ -5,6 +5,7 @@ import SBOMModal from "../../components/model";
 import AddApplicationForm from "../AddApplication/AddApplication";
 import SearchComponent  from "../../components/search";
 import { showSuccessToast, showErrorToast } from "../../utils/Toast/Toast";
+import { FaEdit, FaTrash } from 'react-icons/fa';
 import api from '../../utils/api'
 import './ViewApplication.css';
 
@@ -24,6 +25,8 @@ const ViewApplication = () => {
         manufacturer: '',
         sbom: '',
     });
+    const [editingApplication, setEditingApplication] = useState(null);
+
 
     useEffect(() => {
         fetchApplications();
@@ -59,7 +62,53 @@ const ViewApplication = () => {
         { name: 'Supplier', selector: row => row.supplier },
         { name: 'Manufacturer', selector: row => row.manufacturer },
         { name: 'SBOM', selector: row => row.sbom },
+        {
+            name: 'Actions',
+            cell: row => (
+                <div className="action-icons">
+                    <FaEdit
+                        className="edit-icon"
+                        onClick={() => handleEdit(row)}
+                        title="Edit"
+                    />
+                    <FaTrash
+                        className="delete-icon"
+                        onClick={() => handleDelete(row)}
+                        title="Delete"
+                    />
+                </div>
+            ),
+            ignoreRowClick: true,
+            allowOverflow: true,
+            button: true,
+        },
     ];
+
+    const handleEdit = (app) => {
+        setEditingApplication(app._id);
+        setFormData({
+            name: app.name,
+            category: app.category,
+            operatingSystem: app.operatingSystem,
+            binaryType: app.binaryType,
+            supplier: app.supplier,
+            manufacturer: app.manufacturer,
+            sbom: app.sbom,
+        });
+        setIsModalOpen(true);
+    };
+
+    const handleDelete = async (app) => {
+        if (window.confirm(`Are you sure you want to delete "${app.name}"?`)) {
+            try {
+                await api.delete(`/deleteApplication/${app._id}`);
+                showSuccessToast("Application deleted successfully!");
+                fetchApplications();
+            } catch (error) {
+                showErrorToast("Error deleting application");
+            }
+        }
+    };
 
     const addApplication = () => {
         setIsModalOpen(true);
@@ -68,40 +117,31 @@ const ViewApplication = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        
         try {
-            const response = await api.post('/addApplication', formData);
-            console.log("Submitted form data", formData);
-            const applicationId = response.data.data._id;
-            showSuccessToast('Application added successfully!');
-            // If there are selected components, insert them into the components table with application ID
-            if (selectedComponents.length > 0) {
-                const componentData = {
-                    application: applicationId,
-                    components: selectedComponents.map((item)=> item.data._id), // Convert array to comma-separated string
-                };
-                console.log("Inserted components:", componentData);
+            if (editingApplication) {
+                // Editing existing
+                await api.put(`/updateApplication/${editingApplication}`, formData);
+                showSuccessToast("Application updated successfully!");
+            } else {
+                // Adding new
+                const response = await api.post('/addApplication', formData);
+                const applicationId = response.data.data._id;
 
-                await saveSbomByAppIds(componentData);
+                if (selectedComponents.length > 0) {
+                    const componentData = {
+                        application: applicationId,
+                        components: selectedComponents.map((item) => item.data._id),
+                    };
+                    await saveSbomByAppIds(componentData);
+                }
+                showSuccessToast("Application added successfully!");
             }
 
-            setFormData({
-                name: '',
-                category: '',
-                operatingSystem: 'iOS',
-                binaryType: 'mobile',
-                supplier: '',
-                manufacturer: '',
-                sbom: '',
-            });
+            fetchApplications();
             setIsModalOpen(false);
             setSelectedComponents([]);
-            fetchApplications();
-
-            return response.data;
         } catch (error) {
-            showErrorToast("Error in form submission");
-            throw error;
+            showErrorToast("Error saving application");
         }
     };
 
