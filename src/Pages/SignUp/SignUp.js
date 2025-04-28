@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../../utils/api'
+import { showSuccessToast, showErrorToast } from "../../utils/Toast/Toast";
 import '../Home/Home.css'; // Reuse your signup CSS file
 
 const SignUp = () => {
