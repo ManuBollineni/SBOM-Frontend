@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';  // ✅ For redirect
 import { showSuccessToast, showErrorToast } from "../../utils/Toast/Toast";
+import { UserContext } from "../../shared/UserContext";
 import api from '../../utils/api';                // ✅ Assuming you have api.js like for signup
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
+  const { login } = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -43,6 +45,8 @@ const Login = () => {
 
         showSuccessToast('Login Successful');
         console.log('Login Successful', response.data);
+        login();
+        
         // Redirect to home/dashboard after login success
         navigate('/Home');
 

@@ -1,26 +1,19 @@
-/* Navbar */
-.navbar {
-    flex-grow: 1; /* Allow navigation to fill available space */
-    display: flex;
-    justify-content: center;
-  }
-  
-  /* Navigation Links */
-  .nav-links {
-    display: flex;
-    gap: 20px; /* Space between links */
-  }
-  
-  .cc-nav-link {
-    font-size: 16px;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
-    transition: 0.3s ease-in-out;
-  }
-  
-  .cc-nav-link:hover,
-  .cc-nav-link.active {
-    background-color: #555; /* Highlight on hover */
-  }
-  
+.nav-links {
+  display: flex;
+  gap: 16px;
+}
+
+.cc-nav-link {
+  color: #cbd5e1;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.cc-nav-link:hover,
+.cc-nav-link.active {
+  background-color: #334155;
+  color: #f8fafc;
+}

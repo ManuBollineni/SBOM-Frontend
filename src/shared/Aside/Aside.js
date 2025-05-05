@@ -1,28 +1,35 @@
-import React from "react";
+import React, { useContext } from "react";
 import './Aside.css';
 import Image from '../Images/SBOM.jpg';
 import NavMain from "../NavMain/NavMain";
+import { UserContext } from "../UserContext";
+import { FiLogIn, FiLogOut } from "react-icons/fi";
 
 const Aside = () =>{
+    const { isLoggedIn, logout } = useContext(UserContext);
+
+
     return (
-        <aside className="cc-aside_main">
-            <header>
-                <a href="/">
-                    <img className="cc-aside_logo"
-                    src={Image}/>
-                </a>
-            </header>
+        <header className="top-header">
+            <div className="logo-title">
+                <h1>SBOM Viewer</h1>
+            </div>
 
-            <NavMain></NavMain>
+            <div className="nav-container">
+                <NavMain />
+            </div>
 
-            <a className="cc-nav-button cc-login-button" href="/Login">
-                Login
-            </a>
-
-            <a className="cc-nav-button cc-logout-button" href="/">
-                Logout
-            </a>
-        </aside>
+            <div className="auth-buttons">
+                {!isLoggedIn ? (
+                    <a className="cc-nav-button cc-login-button" href="/Login">
+                        <FiLogIn style={{ marginRight: "6px" }} />
+                        Login
+                    </a>
+                ) : (
+                    <button className="cc-nav-button cc-logout-button" onClick={logout}>Logout</button>
+                )}
+            </div>
+        </header>
     );
 }
 

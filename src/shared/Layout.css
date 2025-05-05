@@ -24,8 +24,7 @@ code {
 
 /* Main Container */
 .cc-main-content {
-  margin-top: 70px; /* Add margin so content doesn’t hide behind the top navbar */
-  padding: 20px;
-  background-color: #f5f5f5; /* Light background */
-  flex-grow: 1;
+  background-color: #f1f3f6;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
 }
