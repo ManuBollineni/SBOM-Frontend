@@ -4,6 +4,7 @@ import Image from '../Images/SBOM.jpg';
 import NavMain from "../NavMain/NavMain";
 import { UserContext } from "../UserContext";
 import { FiLogIn, FiLogOut } from "react-icons/fi";
+import { NavLink } from 'react-router-dom';
 
 const Aside = () =>{
     const { isLoggedIn, logout } = useContext(UserContext);
@@ -21,10 +22,10 @@ const Aside = () =>{
 
             <div className="auth-buttons">
                 {!isLoggedIn ? (
-                    <a className="cc-nav-button cc-login-button" href="/Login">
+                    <NavLink className="cc-nav-button cc-login-button" to="/Login">
                         <FiLogIn style={{ marginRight: "6px" }} />
                         Login
-                    </a>
+                    </NavLink>
                 ) : (
                     <button className="cc-nav-button cc-logout-button" onClick={logout}>Logout</button>
                 )}
