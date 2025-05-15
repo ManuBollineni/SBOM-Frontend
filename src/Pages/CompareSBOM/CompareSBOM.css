@@ -40,25 +40,30 @@
   }
   
   .compare-button-wrapper {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
     margin-bottom: 2rem;
+    flex-wrap: wrap;
   }
   
   .compare-button {
     background-color: #3b82f6;
     color: white;
-    padding: 0.8rem 2rem;
-    font-size: 1.1rem;
+    padding: 0.75rem 1.8rem;
+    font-size: 1rem;
     font-weight: 600;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
   }
   
   .compare-button:hover {
     background-color: #2563eb;
+    transform: translateY(-1px);
   }
+  
   
   .components-compare-table-section {
     margin-top: 2rem;

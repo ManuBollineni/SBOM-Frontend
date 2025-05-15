@@ -33,7 +33,7 @@ const Datatable = ({ title, columns, data }) => {
       highlightOnHover
       striped
       customStyles={customStyles}
-      noDataComponent = {<div style={{ padding: '1rem', color: '#6b7280' }}>No SBOM components found.</div>}
+      noDataComponent = {<div style={{ padding: '1rem', color: '#6b7280' }}>No data found.</div>}
     />
   );
 };

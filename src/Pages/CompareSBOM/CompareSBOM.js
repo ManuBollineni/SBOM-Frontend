@@ -3,6 +3,10 @@ import React, { useState, useEffect } from 'react';
 import api from '../../utils/api'
 import './CompareSBOM.css';
 
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+
+
 const CompareSBOM = () => {
   const [sbomA, setSbomA] = useState('');
   const [sbomB, setSbomB] = useState('');
@@ -80,6 +84,21 @@ const CompareSBOM = () => {
     });
   };
 
+  const handleDownloadPDF = () => {
+    const input = document.getElementById('comparison-table-section');
+    html2canvas(input).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('l', 'pt', 'a4'); // landscape mode
+      const imgProps = pdf.getImageProperties(imgData);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+  
+      pdf.addImage(imgData, 'PNG', 20, 20, pdfWidth - 40, pdfHeight);
+      pdf.save('SBOM_Comparison.pdf');
+    });
+  };
+  
+
   const comparisonData = mergeComponentLists();
 
 
@@ -113,6 +132,11 @@ const CompareSBOM = () => {
         <button className="compare-button" onClick={handleCompare}>
           Compare
         </button>
+        {comparisonData.length > 0 && (
+        <button className="compare-button" onClick={handleDownloadPDF}>
+          Download PDF
+        </button>
+        )}            
       </div>
 
       <div className="components-compare-table-section">
@@ -122,7 +146,7 @@ const CompareSBOM = () => {
               <th className="border-right">Component Name</th>
               <th>Version (SBOM A)</th>
               <th>License (SBOM A)</th>
-              <th className="border-right">Supplier</th>
+              <th className="border-right">Supplier (SBOM A)</th>
               <th>Version (SBOM B)</th>
               <th>License (SBOM B)</th>
               <th>Supplier (SBOM B)</th>

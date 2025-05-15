@@ -108,8 +108,7 @@ const FileUpload = ({ onPackagesExtracted }) => {
         }
   
       //if (!response.ok) throw new Error('Failed to save SBOM');
-      
-      alert('SBOM saved successfully!');
+      showSuccessToast('SBOM saved successfully!');
   
       // Optionally reset form
       setFormData({
