@@ -40,4 +40,19 @@
     text-align: center;
   }
   
+  .download-button {
+    background-color: #3b82f6;
+    color: white;
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .download-button:hover {
+    background-color: #2563eb;
+  }
   

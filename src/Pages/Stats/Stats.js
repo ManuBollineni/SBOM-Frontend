@@ -11,6 +11,8 @@ import {
 } from 'chart.js';
 import api from '../../utils/api';
 import './Stats.css';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 // Register Chart.js components
 ChartJS.register(ArcElement, BarElement, CategoryScale, LinearScale, Tooltip, Legend);
@@ -43,6 +45,19 @@ const Statistics = () => {
     return colors;
   };
 
+  const handleDownloadPDF = () => {
+    const input = document.getElementById('stats-dashboard');
+    html2canvas(input).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('landscape', 'pt', 'a4');
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+  
+      pdf.addImage(imgData, 'PNG', 20, 20, pdfWidth - 40, pdfHeight);
+      pdf.save('SBOM_Statistics_Dashboard.pdf');
+    });
+  };
+
   // Prepare data dynamically
   const licenseLabels = Object.keys(stats.licenseCounts);
   const licenseData = Object.values(stats.licenseCounts);
@@ -57,7 +72,11 @@ const Statistics = () => {
     <div className="statistics-page">
       <h2>📊 SBOM Statistics Dashboard</h2>
       
-      <div className="charts-grid">
+      <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+        <button className="download-button" onClick={handleDownloadPDF}>Download PDF</button>
+      </div>
+
+      <div id="stats-dashboard" className="charts-grid">
         
         <div className="chart-card">
           <h3>License Distribution</h3>
