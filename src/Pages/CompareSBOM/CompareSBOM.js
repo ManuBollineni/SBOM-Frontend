@@ -139,7 +139,7 @@ const CompareSBOM = () => {
         )}            
       </div>
 
-      <div className="components-compare-table-section">
+      <div id="comparison-table-section"   className="components-compare-table-section">
         <table className="components-compare-table">
           <thead>
             <tr>
